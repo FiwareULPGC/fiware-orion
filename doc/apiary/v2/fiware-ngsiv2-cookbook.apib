@@ -44,51 +44,353 @@ This resource allows you to obtain a list of subresources published by the API:
 
 ### Normalized mode [GET /v2/entities]
 
-+ Response 200 (application/json)
+     
++ Request 
+    
+    + Headers
 
-      [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": {
-               "value": 35.6,
-               "type":  "urn:ogc:def:phenomenon:temperature",
-               "metadata": {
-                   "accuracy": {
-                       "type": "none",
-                       "value": 0.1
-                   }
-               }
-            }
-         },
-         {
-            "type": "Car",
-            "id":   "abc345fg",
-            "speed": {
-                "value":    14.7,
-                "type":     "none",
-                "metadata": { }
-            }
-         }
-      ]
-
-
-### Key values mode [GET /v2/entities?options=keyValues]
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
-
+        
         [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": 35.6
-         },
-         {
-            "type": "Car",
-            "id": "abc345fg",
-            "speed": 14.7
-         }
+          {
+            "id": "fa6691deb80329d4a9daf9ea08cc6db87b060441",
+            "type": "Review",
+            "author":
+            {
+              "type": "Person",
+              "value": "user8",
+              "metadata":
+              {
+              }
+            },
+            "dateCreated":
+            {
+              "type": "date",
+              "value": "2016-05-04T14:16:56.00Z",
+              "metadata":
+              {
+              }
+            },
+            "itemReviewed":
+            {
+              "type": "Restaurant",
+              "value": "Elizalde",
+              "metadata":
+              {
+              }
+            },
+            "publisher":
+            {
+              "type": "Organization",
+              "value": "Bitergia",
+              "metadata":
+              {
+              }
+            },
+            "reviewBody":
+            {
+              "type": "none",
+              "value": "Body review",
+              "metadata":
+              {
+              }
+            },
+            "reviewRating":
+            {
+              "type": "Rating",
+              "value": 3,
+              "metadata":
+              {
+              }
+            }
+          },
+          {
+            "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                "addressRegion": "Araba",
+                "addressLocality": "Alegría-Dulantzi",
+                "postalCode": "01240"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 3
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 120,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise2",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8404625, -2.5123277",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Elizalde",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.135Z"
+                }
+              }
+            },
+            "priceRange":
+            {
+              "type": "none",
+              "value": 0,
+              "metadata":
+              {
+              }
+            },
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 400 868",
+              "metadata":
+              {
+              }
+            }
+          },
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Avenida de Los Huetos 17",
+                "addressRegion": "Álava",
+                "addressLocality": "Vitoria-Gasteiz",
+                "postalCode": "01010"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 2
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 160,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise4",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8538811, -2.7006836",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Araba",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.160Z"
+                }
+              }
+            },
+            "priceRange":
+            {
+              "type": "none",
+              "value": 42,
+              "metadata":
+              {
+              }
+            },
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 222 669",
+              "metadata":
+              {
+              }
+            },
+            "url":
+            {
+              "type": "none",
+              "value": "http://www.restaurantearaba.com/",
+              "metadata":
+              {
+              }
+            }
+          }
         ]
+
+### Key values mode [GET /v2/entities{?options}]
+
++ Parameters
+    
+    + options: keyValues (optional, string) - keyValues: This mode represents each entity attribute only by its value, leaving out the information about type and metadata
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
++ Response 200 (application/json)
+
+          [
+            {
+              "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+              "type": "Restaurant",
+              "address":
+              {
+                "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                "addressRegion": "Araba",
+                "addressLocality": "Alegría-Dulantzi",
+                "postalCode": "01240"
+              },
+              "aggregateRating":
+              {
+                "reviewCount": 1,
+                "ratingValue": 3
+              },
+              "capacity": 120,
+              "department": "Franchise2",
+              "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+              "location": "42.8404625, -2.5123277",
+              "name": "Elizalde",
+              "occupancyLevels": 0,
+              "priceRange": 0,
+              "telephone": "945 400 868"
+            },
+            {
+              "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+              "type": "Restaurant",
+              "address":
+              {
+                "streetAddress": "Avenida de Los Huetos 17",
+                "addressRegion": "Álava",
+                "addressLocality": "Vitoria-Gasteiz",
+                "postalCode": "01010"
+              },
+              "aggregateRating":
+              {
+                "reviewCount": 1,
+                "ratingValue": 2
+              },
+              "capacity": 160,
+              "department": "Franchise4",
+              "description": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+              "location": "42.8538811, -2.7006836",
+              "name": "Araba",
+              "occupancyLevels": 0,
+              "priceRange": 42,
+              "telephone": "945 222 669",
+              "url": "http://www.restaurantearaba.com/"
+            },
+            {
+                "id": "fa6691deb80329d4a9daf9ea08cc6db87b060441",
+                "type": "Review",
+                "author": "user8",
+                "dateCreated": "2016-05-04T14:16:56.00Z",
+                "itemReviewed": "Elizalde",
+                "publisher": "Bitergia",
+                "reviewBody": "Body review",
+                "reviewRating": 3
+            }
+          ]
+
+
 
 ### Pagination [GET /v2/entities{?limit,offset,options}]
 
@@ -139,157 +441,660 @@ This resource allows you to obtain a list of subresources published by the API:
 ### By id [GET /v2/entities{?id,options}]
 
 + Parameters
-    + id: DC_S1_D41 (optional, string) - Only retrieve entities with this id
+    + id: 0115206c51f60b48b77e4c937835795c33bb953f (optional, string) - Only retrieve entities with this id
     + options: keyValues (optional, string) - rendering options
+
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
-        [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": 35.6
-         }
-        ]
+
+
+          [
+            {
+              "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+              "type": "Restaurant",
+              "address":
+              {
+                "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                "addressRegion": "Araba",
+                "addressLocality": "Alegría-Dulantzi",
+                "postalCode": "01240"
+              },
+              "aggregateRating":
+              {
+                "reviewCount": 1,
+                "ratingValue": 3
+              },
+              "capacity": 120,
+              "department": "Franchise2",
+              "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+              "location": "42.8404625, -2.5123277",
+              "name": "Elizalde",
+              "occupancyLevels": 0,
+              "priceRange": 0,
+              "telephone": "945 400 868"
+            }
+          ]
+
+
 
 ### By type [GET /v2/entities{?type}]
 
 + Parameters
-    + type: Room (optional, string) - Only retrieve entities of this type
+    + type: Restaurant (optional, string) - Only retrieve entities of this type
+
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": {
-               "value": 35.6,
-               "type": "urn:ogc:def:phenomenon:temperature",
-               "metadata": {
-                   "accuracy": {
-                       "type":  "none",
-                       "value": 0.1
-                   }
-               }
+          {
+            "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                "addressRegion": "Araba",
+                "addressLocality": "Alegría-Dulantzi",
+                "postalCode": "01240"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 3
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 120,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise2",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8404625, -2.5123277",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Elizalde",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.135Z"
+                }
+              }
+            },
+            "priceRange":
+            {
+              "type": "none",
+              "value": 0,
+              "metadata":
+              {
+              }
+            },
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 400 868",
+              "metadata":
+              {
+              }
             }
-         },
-         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": {
-               "value": 22,
-               "type": "urn:ogc:def:phenomenon:temperature",
-               "metadata": { }
+          },
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Avenida de Los Huetos 17",
+                "addressRegion": "Álava",
+                "addressLocality": "Vitoria-Gasteiz",
+                "postalCode": "01010"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 2
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 160,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise4",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8538811, -2.7006836",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Araba",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.160Z"
+                }
+              }
+            },
+            "priceRange":
+            {
+              "type": "none",
+              "value": 42,
+              "metadata":
+              {
+              }
+            },
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 222 669",
+              "metadata":
+              {
+              }
+            },
+            "url":
+            {
+              "type": "none",
+              "value": "http://www.restaurantearaba.com/",
+              "metadata":
+              {
+              }
             }
-         }
+          }
         ]
 
 ### By id list [GET /v2/entities{?id,options}]
 
 + Parameters
-    + id: DC_S1_D41, Boe_Idearium (optional, string) - Id list with the entities to be retrieved
+    + id: 0115206c51f60b48b77e4c937835795c33bb953f,34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6 (optional, string) - Id list with the entities to be retrieved
     + options: keyValues (optional, string) - rendering options
+
+
++ Request 
     
+    + Headers
+
+            Fiware-Service: tourguide
+
 + Response 200 (application/json)
 
+
+
         [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": 35.6
-         },
-         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": 22.5
-         }
+          {
+            "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+            "type": "Restaurant",
+            "address":
+            {
+              "streetAddress": "Cuesta de las Cabras Aldapa 2",
+              "addressRegion": "Araba",
+              "addressLocality": "Alegría-Dulantzi",
+              "postalCode": "01240"
+            },
+            "aggregateRating":
+            {
+              "reviewCount": 1,
+              "ratingValue": 3
+            },
+            "capacity": 120,
+            "department": "Franchise2",
+            "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+            "location": "42.8404625, -2.5123277",
+            "name": "Elizalde",
+            "occupancyLevels": 0,
+            "priceRange": 0,
+            "telephone": "945 400 868"
+          },
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "address":
+            {
+              "streetAddress": "Avenida de Los Huetos 17",
+              "addressRegion": "Álava",
+              "addressLocality": "Vitoria-Gasteiz",
+              "postalCode": "01010"
+            },
+            "aggregateRating":
+            {
+              "reviewCount": 1,
+              "ratingValue": 2
+            },
+            "capacity": 160,
+            "department": "Franchise4",
+            "description": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+            "location": "42.8538811, -2.7006836",
+            "name": "Araba",
+            "occupancyLevels": 0,
+            "priceRange": 42,
+            "telephone": "945 222 669",
+            "url": "http://www.restaurantearaba.com/"
+          }
         ]
+
 
 
 ### By type list [GET /v2/entities{?type}]
 
 + Parameters
-    + type: ParkingLot, StreetParking (optional, string) - Type list
+    + type: Review,Restaurant (optional, string) - Type list
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         [
-         {
-            "type": "ParkingLot",
-            "id": "P12345-A",
-            "name": {
-               "value":    "Marques de Pombal",
-               "type":     "string",
-               "metadata": { }
+          {
+            "id": "fa6691deb80329d4a9daf9ea08cc6db87b060441",
+            "type": "Review",
+            "author":
+            {
+              "type": "Person",
+              "value": "user8",
+              "metadata":
+              {
+              }
             },
-            "availableSpotNumber": {
-              "value":    111,
-              "type":     "number",
-              "metadata": { }
+            "dateCreated":
+            {
+              "type": "date",
+              "value": "2016-05-04T14:16:56.00Z",
+              "metadata":
+              {
+              }
             },
-            "totalSpotNumber": {
-              "value":    250,
-              "type":     "number",
-              "metadata": { }
+            "itemReviewed":
+            {
+              "type": "Restaurant",
+              "value": "Elizalde",
+              "metadata":
+              {
+              }
             },
-            "lastEntrance": {
-               "value":    "2015-11-26T11:45:12.398Z",
-               "type":     "date",
-               "metadata": { }
+            "publisher":
+            {
+              "type": "Organization",
+              "value": "Bitergia",
+              "metadata":
+              {
+              }
             },
-            "location": {
-              "type":  "geo:point",
-              "value": "40.6378754,-8.6370621",
-              "metadata": {
-                "crs": {
-                  "type":  "urn:ogc:def:crs",
-                  "value": "EPSG::4326"
+            "reviewBody":
+            {
+              "type": "none",
+              "value": "Body review",
+              "metadata":
+              {
+              }
+            },
+            "reviewRating":
+            {
+              "type": "Rating",
+              "value": 3,
+              "metadata":
+              {
+              }
+            }
+          },
+          {
+            "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                "addressRegion": "Araba",
+                "addressLocality": "Alegría-Dulantzi",
+                "postalCode": "01240"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 3
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 120,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise2",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8404625, -2.5123277",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Elizalde",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.135Z"
                 }
-              } 
-            }
-         },
-         {
-            "type": "StreetParking",
-            "id": "A45678",
-            "availableSpotNumber": {
-              "value":     11,
-              "type":      "number",
-              "metadata": { }
+              }
             },
-            "totalSpotNumber": {
-              "value":    20,
-              "type":     "number",
-              "metadata": { }
+            "priceRange":
+            {
+              "type": "none",
+              "value": 0,
+              "metadata":
+              {
+              }
             },
-            "location": {
-              "type": "geo:polygon",
-              "value": [
-                "40.64125502310924,-8.653267621994019",
-                "40.64123059990093,-8.652441501617432",
-                "40.64147483158176,-8.650263547897339",
-                "40.64125502310924,-8.653267621994019"
-              ],
-              "metadata": { } 
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 400 868",
+              "metadata":
+              {
+              }
             }
-         }
+          },
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "address":
+            {
+              "type": "PostalAddress",
+              "value":
+              {
+                "streetAddress": "Avenida de Los Huetos 17",
+                "addressRegion": "Álava",
+                "addressLocality": "Vitoria-Gasteiz",
+                "postalCode": "01010"
+              },
+              "metadata":
+              {
+              }
+            },
+            "aggregateRating":
+            {
+              "type": "AggregateRating",
+              "value":
+              {
+                "reviewCount": 1,
+                "ratingValue": 2
+              },
+              "metadata":
+              {
+              }
+            },
+            "capacity":
+            {
+              "type": "PropertyValue",
+              "value": 160,
+              "metadata":
+              {
+              }
+            },
+            "department":
+            {
+              "type": "none",
+              "value": "Franchise4",
+              "metadata":
+              {
+              }
+            },
+            "description":
+            {
+              "type": "none",
+              "value": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+              "metadata":
+              {
+              }
+            },
+            "location":
+            {
+              "type": "geo:point",
+              "value": "42.8538811, -2.7006836",
+              "metadata":
+              {
+              }
+            },
+            "name":
+            {
+              "type": "none",
+              "value": "Araba",
+              "metadata":
+              {
+              }
+            },
+            "occupancyLevels":
+            {
+              "type": "PropertyValue",
+              "value": 0,
+              "metadata":
+              {
+                "timestamp":
+                {
+                  "type": "date",
+                  "value": "2016-05-04T14:10:30.160Z"
+                }
+              }
+            },
+            "priceRange":
+            {
+              "type": "none",
+              "value": 42,
+              "metadata":
+              {
+              }
+            },
+            "telephone":
+            {
+              "type": "none",
+              "value": "945 222 669",
+              "metadata":
+              {
+              }
+            },
+            "url":
+            {
+              "type": "none",
+              "value": "http://www.restaurantearaba.com/",
+              "metadata":
+              {
+              }
+            }
+          }
         ]
+  
 
 ### By pattern matching [GET /v2/entities{?idPattern,options}]
 
 + Parameters
-    + idPattern: DC_.* (optional, string) - Only retrieve entities having a matching id.
+    + idPattern: 0115206c51f60b48b77e4* (optional, string) - Only retrieve entities having a matching id.
     + options: keyValues (optional, string) - rendering options
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": 35.6
-         }
+          {
+            "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+            "type": "Restaurant",
+            "address":
+            {
+              "streetAddress": "Cuesta de las Cabras Aldapa 2",
+              "addressRegion": "Araba",
+              "addressLocality": "Alegría-Dulantzi",
+              "postalCode": "01240"
+            },
+            "aggregateRating":
+            {
+              "reviewCount": 1,
+              "ratingValue": 3
+            },
+            "capacity": 120,
+            "department": "Franchise2",
+            "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+            "location": "42.8404625, -2.5123277",
+            "name": "Elizalde",
+            "occupancyLevels": 0,
+            "priceRange": 0,
+            "telephone": "945 400 868"
+          }
         ]
+
+
 
 # Group Context Entity
 
@@ -298,69 +1103,142 @@ This resource allows you to obtain a list of subresources published by the API:
 ### By Id [GET /v2/entities/{entityId}{?options}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity Id.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity Id.
     + options: keyValues (optional, string) - rendering options
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         {
-            "type": "Room",
-            "id": "Bcn_Welt",
-            "temperature": 21.7,
-            "humidity": 60
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "address":
+          {
+            "streetAddress": "Cuesta de las Cabras Aldapa 2",
+            "addressRegion": "Araba",
+            "addressLocality": "Alegría-Dulantzi",
+            "postalCode": "01240"
+          },
+          "aggregateRating":
+          {
+            "reviewCount": 1,
+            "ratingValue": 3
+          },
+          "capacity": 120,
+          "department": "Franchise2",
+          "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además...",
+          "location": "42.8404625, -2.5123277",
+          "name": "Elizalde",
+          "occupancyLevels": 0,
+          "priceRange": 0,
+          "telephone": "945 400 868"
         }
+
+
 
 ### By Id. Not exists [GET /v2/entities/{entityId}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity Id.
+    + entityId: mistakenID (required, string) - Entity Id.
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 404 (application/json)
 
         {
-            "error": "NotFound",
-            "description": "There is no entity with such an id"
+          "error": "NotFound",
+          "description": "The requested entity has not been found. Check type and id"
         }
+
+
 
 ### By id and type [GET /v2/entities/{entityId}{?type,options}]
 
 + Parameters
-    + entityId: Boe_Idearium (required, string) - Entity ID
-    + type: Room (required, string) - Entity Type
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + type: Restaurant (required, string) - Entity Type
     + options: keyValues (optional, string) - rendering options
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
+
         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": 22.5
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "address":
+          {
+            "streetAddress": "Cuesta de las Cabras Aldapa 2",
+            "addressRegion": "Araba",
+            "addressLocality": "Alegría-Dulantzi",
+            "postalCode": "01240"
+          },
+          "aggregateRating":
+          {
+            "reviewCount": 1,
+            "ratingValue": 3
+          },
+          "capacity": 120,
+          "department": "Franchise2",
+          "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además...",
+          "location": "42.8404625, -2.5123277",
+          "name": "Elizalde",
+          "occupancyLevels": 0,
+          "priceRange": 0,
+          "telephone": "945 400 868"
         }
+
+
 
 ## Partial entity retrieval [/v2/entities/{entityId}{?attrs}]
 
 ### One entity attribute [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrs: temperature (optional, string) - Attribute to be retrieved
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrs: name (optional, string) - Attribute to be retrieved
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": {
-              "value":    22.7,
-              "type":     "urn:ogc:def:phenomenon:temperature",
-              "metadata": { }
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
             }
+          }
         }
+
+
 
 ### One entity attribute. Not present [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrs: mistake (optional, string) - Attribute to be retrieved
 
 + Response 200 (application/json)
@@ -373,25 +1251,35 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Several entity attributes [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: 'Bcn_Welt' (required, string) - Entity ID
-    + attrs: temperature, humidity (optional, string) - Attributes to be retrieved. Coma separated list.
+    + entityId: '0115206c51f60b48b77e4c937835795c33bb953f' (required, string) - Entity ID
+    + attrs: name,telephone (optional, string) - Attributes to be retrieved. Coma separated list.
 
 + Response 200 (application/json)
 
+
+
         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": {
-              "value": 22.7,
-              "type": "urn:ogc:def:phenomenon:temperature",
-              "metadata": { }
-            },
-            "humidity": {
-              "value": 60,
-              "type": "urn:x-ogc:def:phenomenon:OGC:Humidity",
-              "metadata": { }
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
             }
+          },
+          "telephone":
+          {
+            "type": "none",
+            "value": "945 400 868",
+            "metadata":
+            {
+            }
+          }
         }
+
+
             
 # Group Query Context
 
