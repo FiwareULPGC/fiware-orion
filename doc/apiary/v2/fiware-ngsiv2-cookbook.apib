@@ -1300,30 +1300,69 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Query Entities [GET /v2/entities{?q,limit,offset,coords,geometry,attrs,options}]
 
 + Parameters
-    + q: temperature==22.5;humidity==60 (optional, string) - General query parameter that allows
+    + q: capacity>50;priceRange==42 (optional, string) - General query parameter that allows
     to filter by attribute content
-    + coords: 41.3763726, 2.1864475 (optional, string) - Coordinates. Comma separated values.
+    + coords: 42.8538811,-2.7006836 (optional, string) - Coordinates. Comma separated values.
     The number of values will depend on the 'geometry' attribute.
     + geometry: circle;radius=10000 (optional, string) - It can be any type defined by the
     GeoJSON spec or 'circle;radius=&lt;a radius&gt;'.
     The 'exterior' modifier allows to indicate that the referred area is the outside
     of the region, for instance, 'polygon;exterior'
-    + limit: 20 - Limit the number of results (optional, number) - Maximum number of results to return
-    + attrs: seatsNumber (optional, string) - Attributes to be returned
+    + limit: 1 - Limit the number of results (optional, number) - Maximum number of results to return
+    + attrs: name,telephone (optional, string) - Attributes to be returned
     + options: count (optional, string) - count indicates that the total number of records must be returned
 
-+ Response 200 (application/json)
++ Request 
+    
+    + Headers
 
-        [
-         {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "seatsNumber": 15
-         }
-        ]
+            Fiware-Service: tourguide
+
++ Response 200 (application/json)
+    
+    + Headers:
+
+        Fiware-Total-Count: 2
+
+    + Body
+
+            [
+              {
+                "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+                "type": "Restaurant",
+                "name":
+                {
+                  "type": "none",
+                  "value": "Araba",
+                  "metadata":
+                  {
+                  }
+                },
+                "telephone":
+                {
+                  "type": "none",
+                  "value": "945 222 669",
+                  "metadata":
+                  {
+                  }
+                }
+              }
+            ]
+
 
 
 ### Query Entities. No results [GET /v2/entities{?q,limit,coords,geometry,attrs}]
+
++ Parameters
+    + q: name=mistakenName (optional, string) - General query parameter that allows
+    to filter by attribute content
+
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
@@ -1333,36 +1372,77 @@ This resource allows you to obtain a list of subresources published by the API:
 
 ### Create a new entity [POST /v2/entities]
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "temperature": 21.7,
-            "humidity": 60,
-            "location": {
-                "value":  "41.3763726, 2.1864475",
-                "type": "geo:point",
-                "crs": "WGS84"
-            },
-        }
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+                "type": "Review",
+                "id": "review-Elizalde-34",
+                "author": "client1234",
+                "itemReviewed": "0115206c51f60b48b77e4c937835795c33bb953f",
+                "reviewBody": "Cheap and nice place to eat",
+                "ratingValue": 4
+            }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /v2/entities/Bcn-Welt
+            Location: /v2/entities/review-Elizalde-34?type=Review
+
+
+
+### Create a new entity with keyValues [POST /v2/entities{?options}]
+
++ Parameters
+    + options: keyValues (optional, string) - keyValues allows to provide entity data as JSON using key-values  
+
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
+    + Body
+
+            {
+                "type": "Review",
+                "id": "review-Elizalde-35",
+                "author": "client1234",
+                "itemReviewed": "0115206c51f60b48b77e4c937835795c33bb953f",
+                "reviewBody": "Cheap and nice place to eat",
+                "ratingValue": 4
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /v2/entities/review-Elizalde-35?type=Review
 
 
 ### Create a new entity. Error [POST /v2/entities]
 
 + Request (application/json)
 
-        {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "temperature": 21.7
-        }
+    + Headers
+
+            Fiware-Service: tourguide
+    + Body
+
+            {
+                "type": "Review",
+                "id": "review-Elizalde-35",
+                "author": "client1234",
+                "itemReviewed": "0115206c51f60b48b77e4c937835795c33bb953f",
+                "reviewBody": "Cheap and nice place to eat",
+                "ratingValue": 4
+            }
 
 + Response 422 (application/json)
 
@@ -1377,26 +1457,128 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Retrieve all entity data by Id [GET /v2/entities/{entityId}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity Id.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity Id.
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
+
         {
-            "type": "Room",
-            "id": "Bcn_Welt",
-            "temperature": 21.7,
-            "humidity": 60,
-            "location": {
-                "value":  "41.3763726, 2.1864475",
-                "type": "geo:point",
-                "crs": "WGS84"
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "address":
+          {
+            "type": "PostalAddress",
+            "value":
+            {
+              "streetAddress": "Cuesta de las Cabras Aldapa 2",
+              "addressRegion": "Araba",
+              "addressLocality": "Alegría-Dulantzi",
+              "postalCode": "01240"
+            },
+            "metadata":
+            {
             }
+          },
+          "aggregateRating":
+          {
+            "type": "AggregateRating",
+            "value":
+            {
+              "reviewCount": 1,
+              "ratingValue": 3
+            },
+            "metadata":
+            {
+            }
+          },
+          "capacity":
+          {
+            "type": "PropertyValue",
+            "value": 120,
+            "metadata":
+            {
+            }
+          },
+          "department":
+          {
+            "type": "none",
+            "value": "Franchise2",
+            "metadata":
+            {
+            }
+          },
+          "description":
+          {
+            "type": "none",
+            "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+            "metadata":
+            {
+            }
+          },
+          "location":
+          {
+            "type": "geo:point",
+            "value": "42.8404625, -2.5123277",
+            "metadata":
+            {
+            }
+          },
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
+            }
+          },
+          "occupancyLevels":
+          {
+            "type": "PropertyValue",
+            "value": 0,
+            "metadata":
+            {
+              "timestamp":
+              {
+                "type": "date",
+                "value": "2016-05-04T14:10:30.135Z"
+              }
+            }
+          },
+          "priceRange":
+          {
+            "type": "none",
+            "value": 0,
+            "metadata":
+            {
+            }
+          },
+          "telephone":
+          {
+            "type": "none",
+            "value": "945 400 868",
+            "metadata":
+            {
+            }
+          }
         }
+
 
 ### Retrieve all entity data by Id. Not exists [GET /v2/entities/{entityId}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity Id.
+    + entityId: mistakenName (required, string) - Entity Id.
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 404 (application/json)
 
@@ -1408,34 +1590,158 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Retrieve all entity data by id and type [GET /v2/entities/type/{entityType}/id/{entityId}]
 
 + Parameters
-    + entityId: Boe_Idearium (required, string) - Entity ID
-    + entityType: Room (required, string) - Entity Type
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + entityType: Restaurant (required, string) - Entity Type
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         {
-            "type": "Room",
-            "id": "Boe_Idearium",
-            "temperature": 22.5
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "address":
+          {
+            "type": "PostalAddress",
+            "value":
+            {
+              "streetAddress": "Cuesta de las Cabras Aldapa 2",
+              "addressRegion": "Araba",
+              "addressLocality": "Alegría-Dulantzi",
+              "postalCode": "01240"
+            },
+            "metadata":
+            {
+            }
+          },
+          "aggregateRating":
+          {
+            "type": "AggregateRating",
+            "value":
+            {
+              "reviewCount": 1,
+              "ratingValue": 3
+            },
+            "metadata":
+            {
+            }
+          },
+          "capacity":
+          {
+            "type": "PropertyValue",
+            "value": 120,
+            "metadata":
+            {
+            }
+          },
+          "department":
+          {
+            "type": "none",
+            "value": "Franchise2",
+            "metadata":
+            {
+            }
+          },
+          "description":
+          {
+            "type": "none",
+            "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+            "metadata":
+            {
+            }
+          },
+          "location":
+          {
+            "type": "geo:point",
+            "value": "42.8404625, -2.5123277",
+            "metadata":
+            {
+            }
+          },
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
+            }
+          },
+          "occupancyLevels":
+          {
+            "type": "PropertyValue",
+            "value": 0,
+            "metadata":
+            {
+              "timestamp":
+              {
+                "type": "date",
+                "value": "2016-05-04T14:10:30.135Z"
+              }
+            }
+          },
+          "priceRange":
+          {
+            "type": "none",
+            "value": 0,
+            "metadata":
+            {
+            }
+          },
+          "telephone":
+          {
+            "type": "none",
+            "value": "945 400 868",
+            "metadata":
+            {
+            }
+          }
         }
+
+
 
 ### Get one entity attribute [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrs: temperature (optional, string) - Attribute to be retrieved
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrs: name (optional, string) - Attribute to be retrieved
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
-
+        
         {
-            "temperature": 21.7
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
+            }
+          }
         }
+
 
 ### Get one entity attribute. Not present [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrs: mistake (optional, string) - Attribute to be retrieved
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
@@ -1445,15 +1751,39 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Get several entity attributes [GET /v2/entities/{entityId}{?attrs}]
 
 + Parameters
-    + entityId: 'Bcn_Welt' (required, string) - Entity ID
-    + attrs: temperature, humidity (optional, string) - Attributes to be retrieved. Coma separated list.
+    + entityId: '0115206c51f60b48b77e4c937835795c33bb953f' (required, string) - Entity ID
+    + attrs: name,telephone (optional, string) - Attributes to be retrieved. Coma separated list.
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         {
-            "temperature": 21.7,
-            "humidity": 60,
+          "id": "0115206c51f60b48b77e4c937835795c33bb953f",
+          "type": "Restaurant",
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
+            }
+          },
+          "telephone":
+          {
+            "type": "none",
+            "value": "945 400 868",
+            "metadata":
+            {
+            }
+          }
         }
+
+
 
 ### Update entity attributes. [PATCH /v2/entities/{entityId}]
 
