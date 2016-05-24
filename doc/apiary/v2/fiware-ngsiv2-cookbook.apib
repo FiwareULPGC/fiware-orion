@@ -1576,7 +1576,7 @@ This resource allows you to obtain a list of subresources published by the API:
     + Headers
 
             Fiware-Service: tourguide
-            
+
 + Response 200 (application/json)
 
         []
@@ -1751,6 +1751,7 @@ This resource allows you to obtain a list of subresources published by the API:
             Fiware-Service: tourguide
             
     + Body
+
             {
                 "type": "Review",
                 "id": "review-Elizalde-35",
@@ -1790,6 +1791,7 @@ This resource allows you to obtain a list of subresources published by the API:
 
 + Parameters
     + entityId: SampleRestaurant (required, string) - Entity ID
+
 + Request (application/json) 
     
     + Headers
@@ -1831,15 +1833,20 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Update or append. keyValues mode. [POST /v2/entities/{entityId}{?options}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + options:  keyValues (optional, string) - operation options (`keyValues` mode)
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "temperature": 25.5,
-            "seatsNumber": 6
-        }
+            Fiware-Service: tourguide
+    + Body
+
+            {
+                "priceRange": 10,
+                "capacity": 100
+            }
 
 + Response 204
 
@@ -1858,61 +1865,172 @@ This resource allows you to obtain a list of subresources published by the API:
 ### List all. Normalized Mode. [GET /v2/entities/{entityId}/attrs]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
-
+       
         {
-            "temperature": {
-               "type":     "number",
-               "value":    22.5,
-               "metadata": {
-                 "unitCode": {
-                    "type": "none",
-                    "value": "CEL"
-                 }
-               }
+          "address":
+          {
+            "type": "PostalAddress",
+            "value":
+            {
+              "streetAddress": "Cuesta de las Cabras Aldapa 2",
+              "addressRegion": "Araba",
+              "addressLocality": "Alegría-Dulantzi",
+              "postalCode": "01240"
             },
-            "humidity": {
-               "type": "number",
-               "value": 60,
-               "metadata": { }
-            },
-            "location": {
-              "type": "geo:point",
-              "value": "41.3763726, 2.1864475",
-              "metadata": { }
+            "metadata":
+            {
             }
+          },
+          "aggregateRating":
+          {
+            "type": "AggregateRating",
+            "value":
+            {
+              "reviewCount": 1,
+              "ratingValue": 3
+            },
+            "metadata":
+            {
+            }
+          },
+          "capacity":
+          {
+            "type": "PropertyValue",
+            "value": 120,
+            "metadata":
+            {
+            }
+          },
+          "department":
+          {
+            "type": "none",
+            "value": "Franchise2",
+            "metadata":
+            {
+            }
+          },
+          "description":
+          {
+            "type": "none",
+            "value": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+            "metadata":
+            {
+            }
+          },
+          "location":
+          {
+            "type": "geo:point",
+            "value": "42.8404625, -2.5123277",
+            "metadata":
+            {
+            }
+          },
+          "name":
+          {
+            "type": "none",
+            "value": "Elizalde",
+            "metadata":
+            {
+            }
+          },
+          "occupancyLevels":
+          {
+            "type": "PropertyValue",
+            "value": 0,
+            "metadata":
+            {
+              "timestamp":
+              {
+                "type": "date",
+                "value": "2016-05-04T14:10:30.135Z"
+              }
+            }
+          },
+          "priceRange":
+          {
+            "type": "none",
+            "value": 0,
+            "metadata":
+            {
+            }
+          },
+          "telephone":
+          {
+            "type": "none",
+            "value": "945 400 868",
+            "metadata":
+            {
+            }
+          }
         }
 
 
 ### List all. keyValues Mode. [GET /v2/entities/{entityId}/attrs{?options}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + options: keyValues (optional, string) - flags that payload is in `keyValues`mode.
 
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+            
 + Response 200 (application/json)
 
         {
-            "temperature": 21.7,
-            "humidity":    60,
-            "location":    "41.3763726, 2.1864475"
+          "address":
+          {
+            "streetAddress": "Cuesta de las Cabras Aldapa 2",
+            "addressRegion": "Araba",
+            "addressLocality": "Alegría-Dulantzi",
+            "postalCode": "01240"
+          },
+          "aggregateRating":
+          {
+            "reviewCount": 1,
+            "ratingValue": 3
+          },
+          "capacity": 120,
+          "department": "Franchise2",
+          "description": "Restaurante de estilo sidrería ubicado en Alegria-Dulantzi. Además ...",
+          "location": "42.8404625, -2.5123277",
+          "name": "Elizalde",
+          "occupancyLevels": 0,
+          "priceRange": 0,
+          "telephone": "945 400 868"
         }
+
 
         
 ### Replace all. keyValues mode [PUT /v2/entities/{entityId}/attrs{?options}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + options: keyValues (optional, string) - flags that payload is in `keyValues`mode.
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "temperature": 21.7,
-            "seatsNumber": 12
-        }
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+                "priceRange": 10,
+                "capacity": 100
+            }
 
 + Response 200
         
@@ -1922,31 +2040,30 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Get [GET /v2/entities/{entityId}/attrs/{attrName}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: illuminance (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: name (required, string) - Attribute name.
 
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+            
 + Response 200 (application/json)
 
         {
-            "value": 300,
-            "type": "number",
-            "metadata": {
-              "accuracy": {
-                "value": 1.0,
-                "type": "number"
-              },
-              "unitCode": {
-                "value": "LX",
-                "type":  "none"
-              }
-            }
+          "type": "none",
+          "value": "Elizalde",
+          "metadata":
+          {
+          }
         }
 
 
 ### Get. Not exists [GET /v2/entities/{entityId}/attrs/{attrName}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrName: mistake (required, string) - Attribute name.
 
 + Response 404 (application/json)
@@ -1960,17 +2077,20 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Update [PUT /v2/entities/{entityId}/attrs/{attrName}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: temperature (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: priceRange (required, string) - Attribute name.
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "value": 25.0,
-            "metadata": {
-               "unitCode": "CEL"
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+                "value": 10.0
             }
-        }
 
 + Response 200
 
@@ -1978,9 +2098,15 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Remove [DELETE /v2/entities/{entityId}/attrs/{attrName}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: temperature (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: priceRange (required, string) - Attribute name.
 
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+            
 + Response 204
         
 
@@ -1989,44 +2115,57 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Get. As text [GET /v2/entities/{entityId}/attrs/{attrName}/value]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: temperature (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: name (required, string) - Attribute name.
     
 + Request
 
-  + Headers
+    + Headers
 
-      Accept: text/plain
+            Fiware-Service: tourguidee
+            Accept: text/plain
 
 + Response 200 (text/plain)
 
-        300
+        Elizalde
 
 
 ### Get. As JSON [GET /v2/entities/{entityId}/attrs/{attrName}/value]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: temperature (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: name (required, string) - Attribute name.
+
++ Request
+
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         {
-            "value": 300
+            "value": "Elizalde"
         }
 
 
 ### Update. As Text [PUT /v2/entities/{entityId}/attrs/{attrName}/value]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
-    + attrName: temperature (required, string) - Attribute name.
+    + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
+    + attrName: priceRange (required, string) - Attribute name.
 
 + Request (text/plain)
+    
+    + Headers
 
-        25.0
+            Fiware-Service: tourguide
 
-+ Response 200
+    + Body
+
+            25.0
+
++ Response 204
 
 
 ### Update. As JSON [PUT /v2/entities/{entityId}/attrs/{attrName}/value]
@@ -2036,78 +2175,174 @@ This resource allows you to obtain a list of subresources published by the API:
     + attrName: temperature (required, string) - Attribute name.
 
 + Request (application/json)
+    
+    + Headers
 
-        {
-            "value": 25.0
-        }
+            Fiware-Service: tourguide
 
-+ Response 200
+    + Body
+
+            {
+                "value": 25
+            }
+
++ Response 204
 
 
 # Group Subscriptions
 
 ### List all subscriptions present in the system [GET /v2/subscriptions]
 
-+ Response 200
++ Request
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
++ Response 200 (application/json)
 
         [
+          {
+            "id": "57444cda25516d268e96c98c",
+            "description": "Update average rating",
+            "expires": "2020-04-05T14:00:00.00Z",
+            "status": "active",
+            "subject":
             {
-                "id": "abcdefg",
-                "entity": {
-                    "id": "Bcn_Welt",
-                    "type": "Room"
-                },
-                "attributes": [
-                    "temperature"
-                ],
-                "callback": "http://localhost:1234",
-                "options": {
-                    "duration": "1M",
-                    "condition": "ONCHANGE",
-                    "throttling": "PT5S"
+              "entities":
+              [
+                {
+                  "id": "",
+                  "idPattern": ".*",
+                  "type": "Review"
                 }
+              ],
+              "condition":
+              {
+                "attrs":
+                [
+                  "ratingValue"
+                ]
+              }
             },
-             {
-                "id": "wyztrew",
-                "entity": {
-                    "pattern": "DC_*",
-                    "type": "Room"
-                },
-                "attributes": [
-                    "temperature"
-                ],
-                "callback": "http://localhost:1234"
-            }
+            "notification":
+            {
+              "attrs":
+              [
+                "ratingValue",
+                "itemReviewed"
+              ],
+              "attrsFormat": "normalized",
+              "http":
+              {
+                "url": "http://backend.niceeating.foo.com:1028/ratings4"
+              }
+            },
+            "throttling": 5
+          },
+          {
+            "id": "57444e1525516d268e96c98d",
+            "description": "Update average rating 3",
+            "expires": "2020-04-05T14:00:00.00Z",
+            "status": "active",
+            "subject":
+            {
+              "entities":
+              [
+                {
+                  "id": "",
+                  "idPattern": ".*",
+                  "type": "Review"
+                }
+              ],
+              "condition":
+              {
+                "attrs":
+                [
+                  "ratingValue"
+                ]
+              }
+            },
+            "notification":
+            {
+              "attrs":
+              [
+                "ratingValue",
+                "itemReviewed"
+              ],
+              "attrsFormat": "normalized",
+              "http":
+              {
+                "url": "http://backend.niceeating.foo.com:1028/ratings3"
+              }
+            },
+            "throttling": 5
+          }
         ]
 
 ### Get the details of a subscription [GET /v2/subscriptions/{subscriptionId}]
 
 + Parameters
-    + subscriptionId: abcdefg (required, string) - ID of the suscription
+    + subscriptionId: 57444cda25516d268e96c98c (required, string) - ID of the suscription
 
-+ Response 200
++ Request (application/json)
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
++ Response 200 (application/json)
 
         {
-            "id": "abcdefg",
-            "entity": {
-                "id": "Bcn_Welt",
-                "type": "Room"
-            },
-            "attributes": [
-                "temperature"
+          "id": "57444cda25516d268e96c98c",
+          "description": "Update average rating",
+          "expires": "2020-04-05T14:00:00.00Z",
+          "status": "active",
+          "subject":
+          {
+            "entities":
+            [
+              {
+                "id": "",
+                "idPattern": ".*",
+                "type": "Review"
+              }
             ],
-            "callback": "http://localhost:1234",
-            "options": {
-                "duration": "1M",
-                "condition": "ONCHANGE",
-                "throttling": "PT5S"
+            "condition":
+            {
+              "attrs":
+              [
+                "ratingValue"
+              ]
             }
+          },
+          "notification":
+          {
+            "attrs":
+            [
+              "ratingValue",
+              "itemReviewed"
+            ],
+            "attrsFormat": "normalized",
+            "http":
+            {
+              "url": "http://backend.niceeating.foo.com:1028/ratings4"
+            }
+          },
+          "throttling": 5
         }
+
 
 ### Remove a suscription [DELETE /v2/subscriptions/{subscriptionId}]
 
 + Parameters
-    + subscriptionId: abcdefg (required, string) - ID of the suscription
+    + subscriptionId: 57444cda25516d268e96c98c (required, string) - ID of the suscription
+
++ Request
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 204
 
@@ -2115,34 +2350,59 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Create a new subscription [POST /v2/subscriptions]
 
 + Request (application/json)
+    
+    + Headers
 
-        {
-            "entity": {
-                "pattern": "Boe_*",
-                "type": "Room"
-            },
-            "attributes": [
-                "humidity"
-            ],
-            "callback": "http://subscriber.example.com/notify"
-        }
+            Fiware-Service: tourguide
+    + Body
+
+            {
+              "description": "Update average rating",
+              "subject": {
+                "entities": [
+                  {
+                    "idPattern": ".*",
+                    "type": "Review"
+                  }
+                ],
+                "condition": {
+                  "attrs": [
+                    "ratingValue"
+                  ]
+                }
+              },
+              "notification": {
+                "http": {
+                  "url": "http://backend.niceeating.foo.com:1028/ratings4"
+                },
+                "attrs": [
+                  "ratingValue",
+                  "itemReviewed"
+                ]
+              },
+              "expires": "2020-04-05T14:00:00.00Z",
+              "throttling": 5
+            }
 
 + Response 201
 
     + Headers
 
-            Location: /subscriptions/abcde98765
+            Location: /v2/subscriptions/57444cda25516d268e96c98c
 
 ### Partial - Update an existing subscription [PATCH /v2/subscriptions/{subscriptionId}]
 
 + Parameters
-    + subscriptionId: abcdefgh (required, string) - ID of the suscription
+    + subscriptionId: 57444cda25516d268e96c98c (required, string) - ID of the suscription
 
-+ Request
++ Request (application/json)
 
-        {
-            "duration": "1Y"
-        }
+            Fiware-Service: tourguide
+    + Body
+        
+            {
+                "duration": "1Y"
+            }
 
 + Response 204
 
