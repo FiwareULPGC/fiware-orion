@@ -1288,47 +1288,81 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Query by attribute content [GET /v2/entities{?q,limit,offset,attrs,options}]
 
 + Parameters
-    + q: temperature==22.5;humidity==60 (optional, string) - General query parameter that allows
+    + q: capacity>50;priceRange==42 (optional, string) - General query parameter that allows
     to filter by attribute content. 
     + limit: 20 - Limit the number of results (optional, number) - Maximum number of results to return
-    + attrs: seatsNumber (optional, string) - Attributes to be returned
+    + attrs: name (optional, string) - Attributes to be returned
     + options: keyValues (optional, string) - query options (`keyValues` mode)
+
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         [
-         {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "seatsNumber": 15
-         }
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "name": "Araba"
+          }
         ]
+
 
 ### Query by distance to a certain point [GET /v2/entities{?type,coords,georel,geometry,options}]
 
 + Parameters
-    + type: WeatherStation (optional, string) - Entity type requested.
-    + coords: 41.3763726, 2.1864475 (optional, string) - Coordinates of the reference point.
+    + type: Restaurant (optional, string) - Entity type requested.
+    + coords: 42.8538811,-2.7006836 (optional, string) - Coordinates of the reference point.
     + geometry: point (optional, string) - Geometry (point, line, polygon) represented by the `coords` parameter. 
-    + georel: near;maxDistance:1000 (optional, string) - Geospatial relationship.
-    This example refers to those entities located at a maximum distance of 1000 meters from the reference point.
+    + georel: near;maxDistance:100 (optional, string) - Geospatial relationship.
+    This example refers to those entities located at a maximum distance of 100 meters from the reference point.
     + options: keyValues (optional, string) - query options (`keyValues` mode)
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
         [
-         {
-            "type": "WeatherStation",
-            "id": "AEMET-789",
-            "location": "43.5,-8.2"
-         }
+          {
+            "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+            "type": "Restaurant",
+            "address":
+            {
+              "streetAddress": "Avenida de Los Huetos 17",
+              "addressRegion": "Álava",
+              "addressLocality": "Vitoria-Gasteiz",
+              "postalCode": "01010"
+            },
+            "aggregateRating":
+            {
+              "reviewCount": 1,
+              "ratingValue": 2
+            },
+            "capacity": 160,
+            "department": "Franchise4",
+            "description": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ...",
+            "location": "42.8538811, -2.7006836",
+            "name": "Araba",
+            "occupancyLevels": 0,
+            "priceRange": 42,
+            "telephone": "945 222 669",
+            "url": "http://www.restaurantearaba.com/"
+          }
         ]
 
 
 ### No results [GET /v2/entities{?q}]
 
 + Parameters
-    + q: temperature>45 (optional, string) - General query parameter that allows
+    + q: capacity>500 (optional, string) - General query parameter that allows
     to filter by attribute content
 
 + Response 200 (application/json)
@@ -1341,37 +1375,39 @@ This resource allows you to obtain a list of subresources published by the API:
 
 ### Normalized mode [POST /v2/entities]
 
-+ Request (application/json)
++ Request 
+    
+    + Headers
 
-        {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "temperature": {
-              "value": 21.7,
-              "metadata": {
-                 "unitCode": {
-                    "value": "CEL"
-                 }
-              }
-            },
-            "humidity": {
-              "value": 60    
-            },
-            "address": {
-              "value": {
-                "addressCountry":  "ES",
-                "addressLocality": "Barcelona",
-                "streetAddress":   "Diagonal 00"             
-              },
-              "type": "PostalAddress"
+            Fiware-Service: tourguide
+
+    + Body
+
+            {
+                "type": "Review",
+                "id": "review-Elizalde-34",
+                "author": {
+                  "type":"Person",
+                  "value": "Client1234"
+                },
+                "itemReviewed": {
+                  "type": "Restaurant",
+                  "value": ""    
+                },
+                "reviewBody": {
+                  "value": "Cheap and nice place to eat."
+                },
+                "reviewRating":{
+                  "type": "Rating",
+                  "value": 4
+                }
             }
-        }
       
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /v2/entities/Bcn-Welt?type=Room
+            Location: /v2/entities/review-Elizalde-34?type=Review
 
 
 ### keyValues mode [POST /v2/entities{?options}]
@@ -1379,52 +1415,80 @@ This resource allows you to obtain a list of subresources published by the API:
 + Parameters
     + options: keyValues (optional, string) - operation options (`keyValues` mode)
 
-+ Request (application/json)    
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "temperature": 21.7,
-            "humidity": 60,
-            "address": {
-              "addressCountry":  "ES",
-              "addressLocality": "Barcelona",
-              "streetAddress":   "Diagonal 00"
-            }  
-        }
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+                "type": "Review",
+                "id": "review-Elizalde-35",
+                "author": "client1234",
+                "itemReviewed": "0115206c51f60b48b77e4c937835795c33bb953f",
+                "reviewBody": "Cheap and nice place to eat",
+                "ratingValue": 4
+            }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /v2/entities/Bcn-Welt?type=Room
+            Location: /v2/entities/review-Elizalde-35?type=Review
+
 
 ### Georeferencing using simple location format [POST /v2/entities]
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-           "id":   "AEMET-1351",
-           "type": "WeatherStation",
-           "address": {
-              "value": {
-                "addressCountry":  "ES",
-                "addressLocality": "Mañón",
-                "addressRegion":   "La Coruña"
-              }
-           },
-           "name": "Estaca de Bares",
-           "location": {              
-              "type":  "geo:point",
-              "value": "43.7861, -7.6847"
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+               "id":   "SampleRestaurant",
+               "type": "Restaurant",
+               "address": {
+                  "type": "PostalAddress",
+                  "value": {
+                    "streetAddress": "Cuesta de las Cabras Aldapa 2",
+                    "addressLocality": "Alegría-Dulantzi",
+                    "addressRegion":   "Araba",
+                    "postalCode": "01240"
+                  }
+               },
+               "name": {
+                  "value": "Sample restaurant"
+                },
+               "location": {              
+                  "type":  "geo:point",
+                  "value": "42.8404625, -2.5123277"
+               },
+               "priceRange": {
+                   "value": 10
+               },
+               "telephone": {
+                   "value": "555 55 55 55"
+               },
+               "capacity": {
+                   "type": "propertyValue",
+                   "value": 120
+               },
+               "description": {
+                  "value": "Sample restaurant"
+               }
             }
-        }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /v2/entities/AEMET-1351?type=WeatherStation
+            Location: /v2/entities/SampleRestaurant?type=Restaurant
+
 
 ### Georeferencing using GeoJSON [POST /v2/entities]
 
