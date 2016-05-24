@@ -397,43 +397,241 @@ This resource allows you to obtain a list of subresources published by the API:
 + Parameters
     + options: count
     + limit: 2
-    + offset: 2
+    + offset: 1
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 200 (application/json)
 
     + Headers
 
-            Fiware-Total-Count: 30
-            Link: http://example.org/v2/entities?offset=4&limit=2; rel="next", http://example.org/v2/entities?offset=28&limit=2; rel="last",
-            http://example.org/v2/entities?offset=0&limit=2; rel="first", http://example.org/v2/entities?offset=2&limit=2; rel="prev"
+            Fiware-Total-Count: 2068
+            Link: http://example.org/v2/entities?offset=2&limit=2; rel="next", http://example.org/v2/entities?offset=2066&limit=2; rel="last",
+            http://example.org/v2/entities?offset=0&limit=2; rel="first", http://example.org/v2/entities?offset=1&limit=2; rel="prev"
 
     + Body
 
-      [
-         {
-            "type": "Room",
-            "id": "DC_S1_D41",
-            "temperature": {
-               "value": 35.6,
-               "type": "urn:ogc:def:phenomenon:temperature",
-               "metadata": {
-                   "accuracy": {
-                       "type":  "none",
-                       "value": 0.1
-                   }
-               }
-            }
-         },
-         {
-            "type": "Car",
-            "id": "abc345fg",
-            "speed": {
-                "value"   : 14.7,
-                "type"    : "none",
-                "metadata": { }
-            }
-         }
-      ]
+            [
+              {
+                "id": "34f036f9eef1f403c0ea66c55b8cdbace4b5f7a6",
+                "type": "Restaurant",
+                "address":
+                {
+                  "type": "PostalAddress",
+                  "value":
+                  {
+                    "streetAddress": "Avenida de Los Huetos 17",
+                    "addressRegion": "Álava",
+                    "addressLocality": "Vitoria-Gasteiz",
+                    "postalCode": "01010"
+                  },
+                  "metadata":
+                  {
+                  }
+                },
+                "aggregateRating":
+                {
+                  "type": "AggregateRating",
+                  "value":
+                  {
+                    "reviewCount": 1,
+                    "ratingValue": 2
+                  },
+                  "metadata":
+                  {
+                  }
+                },
+                "capacity":
+                {
+                  "type": "PropertyValue",
+                  "value": 160,
+                  "metadata":
+                  {
+                  }
+                },
+                "department":
+                {
+                  "type": "none",
+                  "value": "Franchise4",
+                  "metadata":
+                  {
+                  }
+                },
+                "description":
+                {
+                  "type": "none",
+                  "value": "El restaurante Araba cuenta con amplios salones para todo tipo de celebraciones, y además ....",
+                  "metadata":
+                  {
+                  }
+                },
+                "location":
+                {
+                  "type": "geo:point",
+                  "value": "42.8538811, -2.7006836",
+                  "metadata":
+                  {
+                  }
+                },
+                "name":
+                {
+                  "type": "none",
+                  "value": "Araba",
+                  "metadata":
+                  {
+                  }
+                },
+                "occupancyLevels":
+                {
+                  "type": "PropertyValue",
+                  "value": 0,
+                  "metadata":
+                  {
+                    "timestamp":
+                    {
+                      "type": "date",
+                      "value": "2016-05-04T14:10:30.160Z"
+                    }
+                  }
+                },
+                "priceRange":
+                {
+                  "type": "none",
+                  "value": 42,
+                  "metadata":
+                  {
+                  }
+                },
+                "telephone":
+                {
+                  "type": "none",
+                  "value": "945 222 669",
+                  "metadata":
+                  {
+                  }
+                },
+                "url":
+                {
+                  "type": "none",
+                  "value": "http://www.restaurantearaba.com/",
+                  "metadata":
+                  {
+                  }
+                }
+              },
+              {
+                "id": "92e960de796a8cc48ed7c784119f7d5628e31a6f",
+                "type": "Restaurant",
+                "address":
+                {
+                  "type": "PostalAddress",
+                  "value":
+                  {
+                    "streetAddress": "Maskuribai Kalea",
+                    "addressRegion": "Araba",
+                    "addressLocality": "Amurrio",
+                    "postalCode": "01470"
+                  },
+                  "metadata":
+                  {
+                  }
+                },
+                "aggregateRating":
+                {
+                  "type": "AggregateRating",
+                  "value":
+                  {
+                    "reviewCount": 1,
+                    "ratingValue": 2
+                  },
+                  "metadata":
+                  {
+                  }
+                },
+                "capacity":
+                {
+                  "type": "PropertyValue",
+                  "value": 120,
+                  "metadata":
+                  {
+                  }
+                },
+                "department":
+                {
+                  "type": "none",
+                  "value": "Franchise3",
+                  "metadata":
+                  {
+                  }
+                },
+                "description":
+                {
+                  "type": "none",
+                  "value": "Bodega adscrita a la Denominación de Origen Arabako Txakolina y que elabora el 95% de la producción total de esta denominación...",
+                  "metadata":
+                  {
+                  }
+                },
+                "location":
+                {
+                  "type": "geo:point",
+                  "value": "43.047415, -3.0007716",
+                  "metadata":
+                  {
+                  }
+                },
+                "name":
+                {
+                  "type": "none",
+                  "value": "Arabako Txakolina, S.L.",
+                  "metadata":
+                  {
+                  }
+                },
+                "occupancyLevels":
+                {
+                  "type": "PropertyValue",
+                  "value": 0,
+                  "metadata":
+                  {
+                    "timestamp":
+                    {
+                      "type": "date",
+                      "value": "2016-05-04T14:10:30.161Z"
+                    }
+                  }
+                },
+                "priceRange":
+                {
+                  "type": "none",
+                  "value": 0,
+                  "metadata":
+                  {
+                  }
+                },
+                "telephone":
+                {
+                  "type": "none",
+                  "value": "645 713 355",
+                  "metadata":
+                  {
+                  }
+                },
+                "url":
+                {
+                  "type": "none",
+                  "value": "http://www.xarmant.net/",
+                  "metadata":
+                  {
+                  }
+                }
+              }
+            ]
+
 
 
 ## Filter entities [/v2/entities{?id}]
@@ -452,8 +650,6 @@ This resource allows you to obtain a list of subresources published by the API:
             Fiware-Service: tourguide
 
 + Response 200 (application/json)
-
-
 
           [
             {
@@ -1492,45 +1688,61 @@ This resource allows you to obtain a list of subresources published by the API:
 
 ### Georeferencing using GeoJSON [POST /v2/entities]
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-           "id":   "porto-AmbientArea-Boavista",
-           "type": "AmbientArea",
-           "name": "Boavista",
-           "location": {              
-              "type": "geo:json",
-              "value": {
-                 "type": "Polygon",
-                 "coordinates": [ [
-                    [ -8.633629796628234, 41.163854282188204 ],
-                    [ -8.630357419242978, 41.165230294132279 ],
-                    [ -8.627010741427831, 41.164981131496575 ],
-                    [ -8.637337472778501, 41.155229636824181 ],
-                    [ -8.637313461931976, 41.158014959877839 ],
-                    [ -8.636775456788547, 41.161148008811146 ],
-                    [ -8.633629796628234, 41.163854282188204 ]
-                 ] ]
-              }
+            Fiware-Service: tourguide
+            
+    + Body
+
+            {
+               "id":   "Vitoria-Gasteiz-1",
+               "type": "comercialArea",
+               "name": {
+                "value": "Vitoria-Gasteiz-Comercial-Zone"
+               },
+               "location": {              
+                  "type": "geo:json",
+                  "value": {
+                     "type": "Polygon",
+                     "coordinates": [ [
+                        [ 42.847476, -2.763969 ],
+                        [ 42.826006, -2.743151 ],
+                        [ 42.826485, -2.653740 ],
+                        [ 42.867061, -2.630934 ],
+                        [ 42.881801, -2.640617 ],
+                        [ 42.867767, -2.726723 ],
+                        [ 42.847476, -2.763969 ]
+                     ] ]
+                  }
+                }
             }
-        }
 
 + Response 201 (application/json)
 
     + Headers
 
-            Location: /v2/entities/porto-AmbientArea-Boavista?type=AmbientArea
+            Location: /v2/entities/Vitoria-Gasteiz-1?type=comercialArea
             
             
 ### Creation error. Already exists. [POST /v2/entities?options=keyValues]
 
-+ Request (application/json)
++ Request (application/json) 
+    
+    + Headers
 
-        {
-            "type": "Room",
-            "id": "Bcn-Welt",
-            "temperature": 21.7
-        }
+            Fiware-Service: tourguide
+            
+    + Body
+            {
+                "type": "Review",
+                "id": "review-Elizalde-35",
+                "author": "client1234",
+                "itemReviewed": "0115206c51f60b48b77e4c937835795c33bb953f",
+                "reviewBody": "Cheap and nice place to eat",
+                "ratingValue": 4
+            }
 
 + Response 422 (application/json)
 
@@ -1545,7 +1757,13 @@ This resource allows you to obtain a list of subresources published by the API:
 ### By Id [DELETE /v2/entities/{entityId}]
 
 + Parameters
-    + entityId: Boe_Idearium (required, string) - Entity ID
+    + entityId: review-Elizalde-35 (required, string) - Entity ID
+
++ Request (application/json) 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 204
 
@@ -1555,22 +1773,23 @@ This resource allows you to obtain a list of subresources published by the API:
 ### Update. Normalized mode. [PATCH /v2/entities/{entityId}]
 
 + Parameters
-    + entityId: Bcn_Welt (required, string) - Entity ID
+    + entityId: SampleRestaurant (required, string) - Entity ID
++ Request (application/json) 
+    
+    + Headers
 
-+ Request (application/json)
-
+            Fiware-Service: tourguide
+            
     + Body
 
             {
-                "temperature": {
-                  "value": 21.7,
-                  "metadata": {
-                    "unitCode": "CEL"
-                  }
-                },
-                "ambientNoise": {
-                  "value": 31.5
-                }
+               "priceRange": {
+                   "value": 12
+               },
+               "capacity": {
+                   "type": "propertyValue",
+                   "value": 100
+               }
             }
 
 + Response 204
