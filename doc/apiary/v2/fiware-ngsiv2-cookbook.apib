@@ -1437,11 +1437,17 @@ This resource allows you to obtain a list of subresources published by the API:
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrs: mistake (optional, string) - Attribute to be retrieved
 
-+ Response 200 (application/json)
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
++ Response 404 (application/json)
 
         {
-           "type": "Room",
-           "id": "Boe_Idearium"
+          "error": "NotFound",
+          "description": "The requested entity has not been found. Check type and id"
         }
 
 ### Several entity attributes [GET /v2/entities/{entityId}{?attrs}]
@@ -1450,9 +1456,13 @@ This resource allows you to obtain a list of subresources published by the API:
     + entityId: '0115206c51f60b48b77e4c937835795c33bb953f' (required, string) - Entity ID
     + attrs: name,telephone (optional, string) - Attributes to be retrieved. Coma separated list.
 
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+
 + Response 200 (application/json)
-
-
 
         {
           "id": "0115206c51f60b48b77e4c937835795c33bb953f",
@@ -1561,6 +1571,12 @@ This resource allows you to obtain a list of subresources published by the API:
     + q: capacity>500 (optional, string) - General query parameter that allows
     to filter by attribute content
 
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
+            
 + Response 200 (application/json)
 
         []
