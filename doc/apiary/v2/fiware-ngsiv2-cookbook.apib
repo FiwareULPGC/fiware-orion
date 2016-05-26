@@ -1587,7 +1587,7 @@ This resource allows you to obtain a list of subresources published by the API:
 
 ### Normalized mode [POST /v2/entities]
 
-+ Request 
++ Request (application/json)
     
     + Headers
 
@@ -1794,7 +1794,7 @@ This resource allows you to obtain a list of subresources published by the API:
 + Parameters
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
 
-+ Request (application/json) 
++ Request 
     
     + Headers
 
@@ -1907,7 +1907,7 @@ This resource allows you to obtain a list of subresources published by the API:
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + options: keyValues (optional, string) - flags that payload is in `keyValues`mode.
 
-+ Request (application/json) 
++ Request  
     
     + Headers
 
@@ -1970,7 +1970,7 @@ This resource allows you to obtain a list of subresources published by the API:
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrName: name (required, string) - Attribute name.
 
-+ Request (application/json) 
++ Request 
     
     + Headers
 
@@ -1992,6 +1992,12 @@ This resource allows you to obtain a list of subresources published by the API:
 + Parameters
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrName: mistake (required, string) - Attribute name.
+
++ Request 
+    
+    + Headers
+
+            Fiware-Service: tourguide
 
 + Response 404 (application/json)
 
@@ -2028,7 +2034,7 @@ This resource allows you to obtain a list of subresources published by the API:
     + entityId: 0115206c51f60b48b77e4c937835795c33bb953f (required, string) - Entity ID
     + attrName: priceRange (required, string) - Attribute name.
 
-+ Request (application/json) 
++ Request 
     
     + Headers
 
@@ -2212,7 +2218,7 @@ This resource allows you to obtain a list of subresources published by the API:
 + Parameters
     + subscriptionId: 57444cda25516d268e96c98c (required, string) - ID of the suscription
 
-+ Request (application/json)
++ Request
     
     + Headers
 
